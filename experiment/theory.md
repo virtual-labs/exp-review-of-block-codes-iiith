@@ -39,7 +39,7 @@ $$
 (0&1&1&0&1&1&0)
 \end{Bmatrix}
 $$
-Note that the dimension of this code is $k=3$. Observe that the all-zero vector is a codeword of this code. Indeed, the all-zero vector is a member of every codeword. 
+Note that the dimension of this code is $k=3$, its blocklength is $n=7$, and its rate is $\frac{3}{7}$. Observe that the all-zero vector is a codeword of this code. Indeed, the all-zero vector is a member of every codeword. We also observe that the minimum weight of any non-zero codeword in $\cal{C}_1$ is $4$. Thus, the minimum distance of the code is $d_{\min}(\cal{C}_1)=4$. 
 
 ## Parity Check Matrix of a Code
 
@@ -88,6 +88,6 @@ $$
 0&0&1&1&1&0&1
 \end{bmatrix}=(1,0,1,1,0,1,0).
 $$
-This codeword $(1,0,1,1,0,1,0)$ is transmitted through the channel, when we want to communicate the $3$-bit message vector $(1,0,1)$. 
+This codeword $(1,0,1,1,0,1,0)$ is transmitted through the channel, when we want to communicate the $3$-bit message vector $(1,0,1)$. Indeed, each codeword in $\cal{C}_1$ is the codeword obtained by encoding a particular $3$-length message vector. Similarly, for any $[n,k]$ linear code $\cal{C}$, every codeword is obtained by encoding specific $k$-length message vector. Corresponding to the $2^k$ message vectors in $\mathbb{F}_2^k$, there are $2^k$ codewords of length $n$ in $\cal{C}$.  
 
 We will discuss decoding aspects of these codes in the subsequent experiments. 

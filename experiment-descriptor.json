@@ -5,8 +5,23 @@
     "LaTeXinMD": true,
     "units": [
       {
-        "unit-type": "aim"
+        "unit-type": "aim",
+        "target": "aim.html",
+        "source": "aim.md",
+        "label": "Aim",
+        "unit-type": "task",
+        "content-type": "text"
       },
+
+      {
+        "target": "pretest.html",
+        "source": "pretest.json",
+        "label": "Pretest",
+        "unit-type": "task",
+        "content-type": "assesment"
+      },
+
+    
       {
         "target": "theory.html",
         "source": "theory.md",
@@ -28,13 +43,6 @@
         "label": "Review of Block Codes",
         "unit-type": "task",
         "content-type": "simulation"
-      },
-      {
-        "target": "pretest.html",
-        "source": "pretest.json",
-        "label": "Pretest",
-        "unit-type": "task",
-        "content-type": "assesment"
       },
 
       {
