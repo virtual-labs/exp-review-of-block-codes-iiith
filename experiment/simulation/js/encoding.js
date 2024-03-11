@@ -58,6 +58,7 @@ function initial() {
     codewordBits = [0, 0, 0, 0, 0, 0];
     receivedCodewordBitsEntered = [0, 0, 0, 0, 0, 0];
     receivedCodewordBits = [0, 0, 0, 0, 0, 0];
+
     form2.reset();
     form3.reset();
     form4.reset();
@@ -134,7 +135,6 @@ function transmit() {
     part2.style.display = "none";
     part3.style.display = "none";
     part4.style.display = "block";
-
 }
 
 function checkReceived() {
