@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+    <link rel="stylesheet" href="./css/minimum_distance.css">
     <link rel="stylesheet" href="./css/main.css">
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -22,34 +23,34 @@
     <div class="container" style="margin-top:1%;">
 
         <div class="columns is-centered">
-			<div class="column is-one-quarter v-instruction-title">
-				Tasks
-			</div>
-			<div class="column">
-				<div class="v-tabs">
-					<ul>
-						<li id="Task1" onclick="window.location.href = 'dimension_linear_block.html';">
-							<a>
-								Dimension of Linear Block Codes 
-							</a>
-						</li>
+            <div class="column is-one-quarter v-instruction-title">
+                Tasks
+            </div>
+            <div class="column">
+                <div class="v-tabs">
+                    <ul>
+                        <li id="Task1" onclick="window.location.href = 'dimension_linear_block.html';">
+                            <a>
+                                Dimension of Linear Block Codes
+                            </a>
+                        </li>
 
-						<li id="Task2" onclick="window.location.href = 'encoding.html';">
-							<a>
-								Encoding
-							</a>
-						</li>
+                        <li id="Task2" onclick="window.location.href = 'encoding.html';">
+                            <a>
+                                Encoding
+                            </a>
+                        </li>
 
-						<li class="is-active" id="Task3">
-							<a>
-								Minimum Distance
-							</a>
-						</li>
+                        <li class="is-active" id="Task3">
+                            <a>
+                                Minimum Distance
+                            </a>
+                        </li>
 
-					</ul>
-				</div>
-			</div>
-		</div>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
 
         <div class="columns is-centered">
@@ -59,7 +60,8 @@
                     <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
                         <ul style="list-style: disc;">
                             <b>Quick theory overview:</b>
-                            <li>The codeword \(\mathbf{y}\)  corresponding to a given message \(\mathbf{m}\) and generator matrix
+                            <li>The codeword \(\mathbf{y}\) corresponding to a given message \(\mathbf{m}\) and
+                                generator matrix
                                 \(\mathbf{G}\) is given by $$\mathbf{y} = \mathbf{m} \cdot \mathbf{G}$$</li>
                             </li>
                         </ul>
@@ -85,11 +87,13 @@
                             </li>
 
                             <li>
-                                If the answer is correct, we will proceed to the next step. Otherwise, click on <b>Reset</b> to try these steps again with a
+                                If the answer is correct, we will proceed to the next step. Otherwise, click on
+                                <b>Reset</b> to try these steps again with a
                                 different binary message.
                             </li>
                             <li>
-                                Enter the number of errors you want to introduce in the transmitted codeword and click on <b>Transmit</b>.
+                                Enter the number of errors you want to introduce in the transmitted codeword and click
+                                on <b>Transmit</b>.
                             </li>
                             <li>
                                 The transmitted codeword will be displayed in <b>Observations</b>.
@@ -131,64 +135,46 @@
 
                 <section id="part1">
                     <form action="" method="get" id="form1" onsubmit="return false">
-                        Enter a <b>3-bit</b> message
-                        <button class="bit" id="msgBit1" onclick="toggleBit(1)">0</button>
-                        <button class="bit" id="msgBit2" onclick="toggleBit(2)">0</button>
-                        <button class="bit" id="msgBit3" onclick="toggleBit(3)">0</button>
+                        Enter all the codewords and corresponding hamming weights for the given generator matrix.
+                        <br>
+                        <br>
+                        <div class="user-input">
+
+                            <div class="codeword-buttons">
+                                <label> <i style="font-weight:500; ">Codeword: </i> &nbsp;</label>
+                                <button class="bit" id="codewordBit1" onclick="toggleCodewordBit(1)">0</button>
+                                <button class="bit" id="codewordBit2" onclick="toggleCodewordBit(2)">0</button>
+                                <button class="bit" id="codewordBit3" onclick="toggleCodewordBit(3)">0</button>
+                                <button class="bit" id="codewordBit4" onclick="toggleCodewordBit(4)">0</button>
+                                <button class="bit" id="codewordBit5" onclick="toggleCodewordBit(5)">0</button>
+                                <button class="bit" id="codewordBit6" onclick="toggleCodewordBit(6)">0</button>
+                            </div>
+
+                            <div class="field">
+                                <label> <i style="font-weight:500; "> Hamming Weight of Codeword:</i> &nbsp;</label>
+                                <input class="bit" type="number" id="hammingWeight">
+                            </div>
+                        </div>
+
                     </form>
                     <br>
-                    <button class="v-button" onclick="display()">Submit</button>
+                    <button class="v-button" onclick="submitCodeword()">Next</button>
                 </section>
 
                 <section id="part2" style="display:none ;">
                     <form action="" method="get" id="form2" onsubmit="return false">
-                        Enter the <b>6-bit</b> codeword corresponding to the message.
+                        Enter the minimum distance of the code.
                         <br>
                         <br>
-
-                        <button class="bit" id="codewordBit1" onclick="toggleCodewordBit(1)">0</button>
-                        <button class="bit" id="codewordBit2" onclick="toggleCodewordBit(2)">0</button>
-                        <button class="bit" id="codewordBit3" onclick="toggleCodewordBit(3)">0</button>
-                        <button class="bit" id="codewordBit4" onclick="toggleCodewordBit(4)">0</button>
-                        <button class="bit" id="codewordBit5" onclick="toggleCodewordBit(5)">0</button>
-                        <button class="bit" id="codewordBit6" onclick="toggleCodewordBit(6)">0</button>
-
+                        <div class="field">
+                            <label> <i style="font-weight:500; "> Minimum Distance: </i> &nbsp;</label>
+                            <input class="bit" type="number" id="minimumDistance">
                     </form>
                     <br>
-                    <button class="v-button" onclick="check()" form="form2">Check</button>
+                    <br>
+                    <button class="v-button" onclick="checkMinimumDistance()">Check</button>
                     <button class="v-button" onclick="initial()">Reset</button>
                 </section>
-
-                <section id="part3" style="display: none;">
-                    <form action="" method="get" id="form3" onsubmit="return false">
-                        Enter number of errors
-                        <br>
-                        <br>
-                        <label for="errorsWanted"> </label>
-                        <input type="number" class="bit" id="errorsWanted" min="0" max="6">
-                    </form>
-
-                    <br>
-                    <button class="v-button" onclick="transmit()" form="form3">Transmit</button>
-                    <button class="v-button" onclick="initial()">Reset</button>
-                </section>
-
-                <section id="part4" style="display: none;">
-                    <form action="" method="get" id="form4" onsubmit="return false">
-                        Enter the result of the minimum distance decoding
-                        <br>
-                        <br>
-                        <button class="bit" id="receivedBit1" onclick="toggleReceivedBit(1)">0</button>
-                        <button class="bit" id="receivedBit2" onclick="toggleReceivedBit(2)">0</button>
-                        <button class="bit" id="receivedBit3" onclick="toggleReceivedBit(3)">0</button>
-                        <button class="bit" id="receivedBit4" onclick="toggleReceivedBit(4)">0</button>
-                        <button class="bit" id="receivedBit5" onclick="toggleReceivedBit(5)">0</button>
-                        <button class="bit" id="receivedBit6" onclick="toggleReceivedBit(6)">0</button>
-                    </form>
-                    <br>
-                    <button class="v-button" onclick="checkReceived()" form="form4">Check</button>
-                    <button class="v-button" onclick="initial()">Reset</button>
-
             </div>
         </div>
 
@@ -196,17 +182,12 @@
             <div class="v-datalist-container components-list">
                 <div class="v-datalist-title">Observations</div>
                 <div id="observations">
-                    <span id="mEntered">
+                    <span id="enteredCodewords">
                     </span>
                     <br>
-                    <span id="cEntered">
+                    <span id="helpPrompt">
                     </span>
                     <br>
-                    <span id="cTransmitted">
-                    </span>
-                    <br>
-                    <span id="decodedEntered">
-                    </span>
                 </div>
             </div>
         </div>

@@ -53,9 +53,9 @@ function checkRate() {
     const rateEntered = document.getElementById("rateEntered");
 
     const dimensionInput = document.getElementById("dimensionInput").value;
-    const rateInput = document.getElementById("rateInput").value;
+    const rateInput = parseFloat(document.getElementById("rateInput").value);
 
-    if (rateInput == 1) {
+    if (rateInput.toFixed(2) == 0.50) {
         rateEntered.innerHTML = "<b>Correct Answer!!!</b>";
         rateEntered.style.color = "green";
     }

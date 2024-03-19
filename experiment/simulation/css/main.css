@@ -101,10 +101,10 @@ h1 {
     width: 2.5em;
     border: solid black;
     border-radius: 0.5em;
-    background-color: #0c9df7;
+    background-color: rgb(40, 142, 200);
     font-size: 1em;
     text-align: center;
-    color: blue;
+    color: rgb(2, 2, 74);
 }
 
 input[type=number]::-webkit-inner-spin-button,
