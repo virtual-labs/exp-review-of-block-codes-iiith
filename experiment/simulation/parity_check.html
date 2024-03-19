@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/dimension_linear_block.css">
+
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
@@ -22,14 +24,41 @@
     <div class="container" style="margin-top:1%;">
 
         <div class="columns is-centered">
+            <div class="column is-one-quarter v-instruction-title">
+                Tasks
+            </div>
+            <div class="column">
+                <div class="v-tabs">
+                    <ul>
+                        <li class="is-active" id="Task1">
+                            <a>
+                                Structure of parity-check matrix 
+                            </a>
+                        </li>
+
+                        <li id="Task2" onclick="window.location.href = 'identify_codewords.html';">
+                            <a>
+                                Identify codewords
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
             <div class="column">
                 <div class="v-collapsible-instruction-container v-instruction-container">
                     <div class="v-collapsible is-size-5">Instructions</div>
                     <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
                         <ul style="list-style: disc;">
                             <b>Quick theory overview:</b>
-                            <li>The codeword \(\mathbf{y}\)  corresponding to a given message \(\mathbf{m}\) and generator matrix
-                                \(\mathbf{G}\) is given by $$\mathbf{y} = \mathbf{m} \cdot \mathbf{G}$$</li>
+                            <li>
+                                A linear code C, [n,k] have generator matrix G, parity check matrix H.
+                            </li>
+                            <li>
+                                 The codeword \(\mathbf{y}\)  corresponding to a given message \(\mathbf{m}\) and generator matrix
+                                \(\mathbf{G}\) is given by $$\mathbf{y} = \mathbf{m} \cdot \mathbf{G}$$
                             </li>
                         </ul>
                         <br>
@@ -38,35 +67,8 @@
                             <b>Procedure:</b>
 
                             <li>
-                                Enter a binary message by clicking the bits and click on <b>Submit</b>.
+                                Enter the dimension in the given block and click the <b>submit</b> button.
                             </li>
-
-                            <li>
-                                The entered message will be displayed in <b>Observations</b>.
-                            </li>
-
-                            <li>
-                                Enter the encoded codeword corresponding to the message and click on <b>submit</b>.
-                            </li>
-
-                            <li>
-                                The correctness of the entered codeword will be displayed in <b>Observations</b>.
-                            </li>
-
-                            <li>
-                                If the answer is correct, we will proceed to the next step. Otherwise, click on <b>Reset</b> to try these steps again with a
-                                different binary message.
-                            </li>
-                            <li>
-                                Enter the number of errors you want to introduce in the transmitted codeword and click on <b>Transmit</b>.
-                            </li>
-                            <li>
-                                The transmitted codeword will be displayed in <b>Observations</b>.
-                            </li>
-                            <li>
-                                Enter the result of the minimum distance decoding and click on <b>Check</b>.
-                            </li>
-
                         </ul>
                     </div>
                 </div>
@@ -78,9 +80,9 @@
     <div class="columns is-centered">
         <div class="column is-11-desktop is-12-tablet is-12-mobile">
             <div class="v-datalist-container components-list">
-                <p>Consider a linear block code corresponding to the generator
+                <p>Consider a linear block code corresponding to the parity check
                     matrix
-                    \(G \)=
+                    \(H \)=
                     \(\begin{bmatrix}
                     1 & 0 & 0 & 1 & 1 & 0\\
                     0 & 1 & 0 & 0 & 1 & 1\\

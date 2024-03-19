@@ -1,4 +1,5 @@
 var m1, m2, m3;
+//test comment
 
 var bits = [0, 0, 0]; // Initial bit values
 var codewordBits = [0, 0, 0, 0, 0, 0]; // Initial codeword bit values
