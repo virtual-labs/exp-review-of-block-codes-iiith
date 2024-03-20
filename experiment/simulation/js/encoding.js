@@ -85,9 +85,9 @@ function check() {
 
         cEntered.innerHTML = "<b>Correct Answer!!!</b>";
         cEntered.style.color = "green";
-        part1.style.display = "none";
-        part2.style.display = "none";
-        part3.style.display = "block";
+        // part1.style.display = "none";
+        // part2.style.display = "block";
+        // part3.style.display = "block";
         return;
     }
 
