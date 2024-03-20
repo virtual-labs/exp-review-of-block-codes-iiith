@@ -1,4 +1,5 @@
 var m1, m2, m3;
+//test comment
 
 var bits = [0, 0, 0]; // Initial bit values
 var codewordBits = [0, 0, 0, 0, 0, 0]; // Initial codeword bit values
@@ -58,6 +59,7 @@ function initial() {
     codewordBits = [0, 0, 0, 0, 0, 0];
     receivedCodewordBitsEntered = [0, 0, 0, 0, 0, 0];
     receivedCodewordBits = [0, 0, 0, 0, 0, 0];
+
     form2.reset();
     form3.reset();
     form4.reset();
@@ -83,9 +85,9 @@ function check() {
 
         cEntered.innerHTML = "<b>Correct Answer!!!</b>";
         cEntered.style.color = "green";
-        part1.style.display = "none";
-        part2.style.display = "none";
-        part3.style.display = "block";
+        // part1.style.display = "none";
+        // part2.style.display = "block";
+        // part3.style.display = "block";
         return;
     }
 
@@ -134,7 +136,6 @@ function transmit() {
     part2.style.display = "none";
     part3.style.display = "none";
     part4.style.display = "block";
-
 }
 
 function checkReceived() {

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+    <title>
+        Generator Matrix
+    </title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+    <link rel="stylesheet" href="./css/minimum_distance.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container" style="margin-top:1%;">
+
+        <div class="columns is-centered">
+            <div class="column is-one-quarter v-instruction-title">
+                Tasks
+            </div>
+            <div class="column">
+                <div class="v-tabs">
+                    <ul>
+                        <li id="Task1" onclick="window.location.href = 'dimension_linear_block.html';">
+                            <a>
+                                Dimension of Linear Block Codes
+                            </a>
+                        </li>
+
+                        <li id="Task2" onclick="window.location.href = 'encoding.html';">
+                            <a>
+                                Encoding
+                            </a>
+                        </li>
+
+                        <li class="is-active" id="Task3">
+                            <a>
+                                Minimum Distance
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="v-collapsible-instruction-container v-instruction-container">
+                    <div class="v-collapsible is-size-5">Instructions</div>
+                    <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+                        <ul style="list-style: disc;">
+                            <b>Quick theory overview:</b>
+                            <li>
+                                The minimum distance is defined as 
+                                $$ d_{min} = \min_{i \neq j} d(c_i, c_j) $$
+                                where \(c_i\) and \(c_j\) are codewords in the code, and \(d(c_i, c_j)\) is the Hamming distance between the codewords \(c_i\) and \(c_j\).
+                            
+                            </li>
+                        </ul>
+                        <br>
+                        <ul style="list-style: disc;">
+
+                            <b>Procedure:</b>
+
+                            <li>
+                                Enter all the codewords and corresponding hamming weights for the given generator matrix. The set of entered codewords will be displayed in the observations section.
+                            </li>
+
+                            <li>
+                                Enter the minimum distance of the code. Click on <b>Check</b> to verify the entered minimum distance. 
+                            </li>
+
+                            <li>
+                                Click on <b>Reset</b> to reset the entered codewords and minimum distance.
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="columns is-centered">
+        <div class="column is-11-desktop is-12-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+                <p>Consider a linear block code corresponding to the generator
+                    matrix
+                    \(G \)=
+                    \(\begin{bmatrix}
+                    1 & 0 & 0 & 1 & 1 & 0\\
+                    0 & 1 & 0 & 0 & 1 & 1\\
+                    0 & 0 & 1 & 1 & 0 & 1
+                    \end{bmatrix}
+                    \).
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+        style="margin-top:-1.5%">
+        <div class="column is-8-desktop is-12-tablet is-12-mobile">
+            <div class="box-question">
+
+                <section id="part1">
+                    <form action="" method="get" id="form1" onsubmit="return false">
+                        Enter all the codewords and corresponding hamming weights for the given generator matrix.
+                        <br>
+                        <br>
+                        <div class="user-input">
+
+                            <div class="codeword-buttons">
+                                <label> <i style="font-weight:500; ">Codeword: </i> &nbsp;</label>
+                                <button class="bit" id="codewordBit1" onclick="toggleCodewordBit(1)">0</button>
+                                <button class="bit" id="codewordBit2" onclick="toggleCodewordBit(2)">0</button>
+                                <button class="bit" id="codewordBit3" onclick="toggleCodewordBit(3)">0</button>
+                                <button class="bit" id="codewordBit4" onclick="toggleCodewordBit(4)">0</button>
+                                <button class="bit" id="codewordBit5" onclick="toggleCodewordBit(5)">0</button>
+                                <button class="bit" id="codewordBit6" onclick="toggleCodewordBit(6)">0</button>
+                            </div>
+
+                            <div class="field">
+                                <label> <i style="font-weight:500; "> Hamming Weight of Codeword:</i> &nbsp;</label>
+                                <input class="bit" type="number" id="hammingWeight">
+                            </div>
+                        </div>
+
+                    </form>
+                    <br>
+                    <button class="v-button" onclick="submitCodeword()">Next</button>
+                </section>
+
+                <section id="part2" style="display:none ;">
+                    <form action="" method="get" id="form2" onsubmit="return false">
+                        Enter the minimum distance of the code.
+                        <br>
+                        <br>
+                        <div class="field">
+                            <label> <i style="font-weight:500; "> Minimum Distance: </i> &nbsp;</label>
+                            <input class="bit" type="number" id="minimumDistance">
+                    </form>
+                    <br>
+                    <br>
+                    <button class="v-button" onclick="checkMinimumDistance()">Check</button>
+                    <button class="v-button" onclick="initial()">Reset</button>
+                </section>
+            </div>
+        </div>
+
+        <div class="column is-3-desktop is-4-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+                <div class="v-datalist-title">Observations</div>
+                <div id="observations">
+                    <span id="enteredCodewords">
+                    </span>
+                    <br>
+                    <span id="helpPrompt">
+                    </span>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+    <script src="./js/minimum_distance.js"></script>
+</body>
+
+</html>

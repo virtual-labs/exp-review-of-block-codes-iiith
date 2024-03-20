@@ -4,7 +4,7 @@
 
 <head>
     <title>
-        Review of Block Codes
+        Generator Matrix
     </title>
 
     <meta charset="UTF-8">
@@ -22,13 +22,45 @@
     <div class="container" style="margin-top:1%;">
 
         <div class="columns is-centered">
+            <div class="column is-one-quarter v-instruction-title">
+                Tasks
+            </div>
+            <div class="column">
+                <div class="v-tabs">
+                    <ul>
+                        <li id="Task1" onclick="window.location.href = 'dimension_linear_block.html';">
+                            <a>
+                                Dimension of Linear Block Codes
+                            </a>
+                        </li>
+
+                        <li class="is-active" id="Task2"  >
+                            <a>
+                                Encoding
+                            </a>
+                        </li>
+
+                        <li id="Task3" onclick="window.location.href = 'minimum_distance.html';">
+                            <a>
+                                Minimum Distance
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="columns is-centered">
             <div class="column">
                 <div class="v-collapsible-instruction-container v-instruction-container">
                     <div class="v-collapsible is-size-5">Instructions</div>
                     <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
                         <ul style="list-style: disc;">
                             <b>Quick theory overview:</b>
-                            <li>The codeword \(\mathbf{y}\)  corresponding to a given message \(\mathbf{m}\) and generator matrix
+                            <li>The codeword \(\mathbf{y}\) corresponding to a given message \(\mathbf{m}\) and
+                                generator matrix
                                 \(\mathbf{G}\) is given by $$\mathbf{y} = \mathbf{m} \cdot \mathbf{G}$$</li>
                             </li>
                         </ul>
@@ -46,7 +78,7 @@
                             </li>
 
                             <li>
-                                Enter the encoded codeword corresponding to the message and click on <b>submit</b>.
+                                Enter the encoded codeword corresponding to the message and click on <b>Check!</b>.
                             </li>
 
                             <li>
@@ -54,17 +86,9 @@
                             </li>
 
                             <li>
-                                If the answer is correct, we will proceed to the next step. Otherwise, click on <b>Reset</b> to try these steps again with a
+                                If the answer is correct, we will proceed to the next step. Otherwise, click on
+                                <b>Reset</b> to try these steps again with a
                                 different binary message.
-                            </li>
-                            <li>
-                                Enter the number of errors you want to introduce in the transmitted codeword and click on <b>Transmit</b>.
-                            </li>
-                            <li>
-                                The transmitted codeword will be displayed in <b>Observations</b>.
-                            </li>
-                            <li>
-                                Enter the result of the minimum distance decoding and click on <b>Check</b>.
                             </li>
 
                         </ul>
@@ -183,7 +207,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/encoding.js"></script>
 </body>
 
 </html>
