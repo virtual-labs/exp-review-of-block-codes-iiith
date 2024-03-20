@@ -32,7 +32,7 @@
                     <ul>
                         <li class="is-active" id="Task1">
                             <a>
-                                Structure of parity-check matrix 
+                                Structure of the parity-check matrix 
                             </a>
                         </li>
 
@@ -54,11 +54,7 @@
                         <ul style="list-style: disc;">
                             <b>Quick theory overview:</b>
                             <li>
-                                A linear code C, [n,k] have generator matrix G, parity check matrix H.
-                            </li>
-                            <li>
-                                 The codeword \(\mathbf{y}\)  corresponding to a given message \(\mathbf{m}\) and generator matrix
-                                \(\mathbf{G}\) is given by $$\mathbf{y} = \mathbf{m} \cdot \mathbf{G}$$
+                                A linear code \( C \), \( [n,k] \), have systematic generator matrix \( G = [ I | P ]\), parity check matrix \(H = [P^T | I] \). Length of codeword is \(n\) and dimension of code is \(k\).
                             </li>
                         </ul>
                         <br>
@@ -67,7 +63,10 @@
                             <b>Procedure:</b>
 
                             <li>
-                                Enter the dimension in the given block and click the <b>submit</b> button.
+                                Enter the dimension in the given matrix in row x column and click the <b>submit</b> button.
+                            </li>
+                            <li>
+                                Enter the binary values for \(P^T\) in another page and click the <b>submit</b> button.
                             </li>
                         </ul>
                     </div>
@@ -77,12 +76,20 @@
     </div>
     <br>
 
+
+    <!-- div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+    style="margin-top:-1.5%">
+    <div class="column is-8-desktop is-12-tablet is-12-mobile">
+        <div class="box-question">
+            <p><b>Let G be a systematic generator matrix as above. Have form [I | P].</b> <br> Enter the dimension of parity check matrix H = \( [P^T | I] \) where I and \( P^{T} \) are submatrix of H.</p-->
+
+
     <div class="columns is-centered">
         <div class="column is-11-desktop is-12-tablet is-12-mobile">
             <div class="v-datalist-container components-list">
-                <p>Consider a linear block code corresponding to the parity check
+                <p>Consider a linear block code corresponding to the generator
                     matrix
-                    \(H \)=
+                    \(G \)=
                     \(\begin{bmatrix}
                     1 & 0 & 0 & 1 & 1 & 0\\
                     0 & 1 & 0 & 0 & 1 & 1\\
@@ -93,80 +100,160 @@
                 </p>
             </div>
         </div>
-    </div>
-
+    </div><br>
+    
     <div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
-        style="margin-top:-1.5%">
-        <div class="column is-8-desktop is-12-tablet is-12-mobile">
-            <div class="box-question">
+    style="margin-top:-1.5%">
+    <div class="column is-8-desktop is-12-tablet is-12-mobile">
+        <div class="box-question">
+            <!--p><b>Let G be a systematic generator matrix as above. Have form [I | P].</b> <br> Enter the dimension of parity check matrix H = \( [P^T | I] \) where I and \( P^{T} \) are submatrix of H.</p-->
+                    <section id="example1">
+                        <form action="" method="get" id="form1" onsubmit="return false">
 
-                <section id="part1">
-                    <form action="" method="get" id="form1" onsubmit="return false">
-                        Enter a <b>3-bit</b> message
-                        <button class="bit" id="msgBit1" onclick="toggleBit(1)">0</button>
-                        <button class="bit" id="msgBit2" onclick="toggleBit(2)">0</button>
-                        <button class="bit" id="msgBit3" onclick="toggleBit(3)">0</button>
-                    </form>
-                    <br>
-                    <button class="v-button" onclick="display()">Submit</button>
-                </section>
+                            <table align="center" text-align="center">
+                                <tr>
+                                    <th>Matrix</th>
+                                    <th>Dimension</th>
+                                </tr>
+                                <tr>
+                                    <td>\( H \)</td>
+                                    <td><label for="a1"> </label>
+                                        <input type="number" class="bit" id="a1" min="0" max="8">
+                                    
+                                        <label for="a2"> </label>
+                                        <input type="number" class="bit" id="a2" min="0" max="8"><br></td>                          
+                                </tr>
+                                <tr>
+                                    <td>\(I\)</td>
+                                    <td><label for="a3"> </label>
+                                        <input type="number" class="bit" id="a3" min="0" max="4">
+                    
+                                        <label for="a4"> </label>
+                                        <input type="number" class="bit" id="a4" min="0" max="4"><br></td>
+                                </tr>
+                                <tr>
+                                    <td>\( P^{T} \)</td>
+                                    <td><label for="a5"> </label>
+                                        <input type="number" class="bit" id="a5" min="0" max="4">
+                    
+                                        <label for="a6"> </label>
+                                        <input type="number" class="bit" id="a6" min="0" max="4"><br></td>
+                                </tr>
+                            </table>
 
-                <section id="part2" style="display:none ;">
-                    <form action="" method="get" id="form2" onsubmit="return false">
-                        Enter the <b>6-bit</b> codeword corresponding to the message.
-                        <br>
-                        <br>
+                            <button class="v-button" onclick="check()" form="form1">Submit</button>
+                            <button class="v-button" onclick="initial()">Reset</button>
+                            <button class="v-button" role="button" onclick="part2()"> Next </button>
 
-                        <button class="bit" id="codewordBit1" onclick="toggleCodewordBit(1)">0</button>
-                        <button class="bit" id="codewordBit2" onclick="toggleCodewordBit(2)">0</button>
-                        <button class="bit" id="codewordBit3" onclick="toggleCodewordBit(3)">0</button>
-                        <button class="bit" id="codewordBit4" onclick="toggleCodewordBit(4)">0</button>
-                        <button class="bit" id="codewordBit5" onclick="toggleCodewordBit(5)">0</button>
-                        <button class="bit" id="codewordBit6" onclick="toggleCodewordBit(6)">0</button>
+                        </form>
+                    </div>
+                </div>
+            
 
-                    </form>
-                    <br>
-                    <button class="v-button" onclick="check()" form="form2">Check</button>
-                    <button class="v-button" onclick="initial()">Reset</button>
-                </section>
 
-                <section id="part3" style="display: none;">
-                    <form action="" method="get" id="form3" onsubmit="return false">
-                        Enter number of errors
-                        <br>
-                        <br>
-                        <label for="errorsWanted"> </label>
-                        <input type="number" class="bit" id="errorsWanted" min="0" max="6">
-                    </form>
+                <div class="column is-3-desktop is-4-tablet is-12-mobile">
+                    <div class="v-datalist-container components-list">
+                        <div class="v-datalist-title">Observations</div>
+                        <div id="obs1">
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <br>
-                    <button class="v-button" onclick="transmit()" form="form3">Transmit</button>
-                    <button class="v-button" onclick="initial()">Reset</button>
-                </section>
+        </section>
 
-                <section id="part4" style="display: none;">
-                    <form action="" method="get" id="form4" onsubmit="return false">
-                        Enter the result of the minimum distance decoding
-                        <br>
-                        <br>
-                        <button class="bit" id="receivedBit1" onclick="toggleReceivedBit(1)">0</button>
-                        <button class="bit" id="receivedBit2" onclick="toggleReceivedBit(2)">0</button>
-                        <button class="bit" id="receivedBit3" onclick="toggleReceivedBit(3)">0</button>
-                        <button class="bit" id="receivedBit4" onclick="toggleReceivedBit(4)">0</button>
-                        <button class="bit" id="receivedBit5" onclick="toggleReceivedBit(5)">0</button>
-                        <button class="bit" id="receivedBit6" onclick="toggleReceivedBit(6)">0</button>
-                    </form>
-                    <br>
-                    <button class="v-button" onclick="checkReceived()" form="form4">Check</button>
-                    <button class="v-button" onclick="initial()">Reset</button>
+            <!--section id="part2" style="display:none ;">
+                <div class="columns is-centered">
+                    <div class="column is-11-desktop is-12-tablet is-12-mobile">
+                        <div class="v-datalist-container components-list">
+                            <p>Consider a linear block code corresponding to the generator
+                                matrix
+                                \(G \)=
+                                \(\begin{bmatrix}
+                                1 & 0 & 0 & 1 & 1 & 0\\
+                                0 & 1 & 0 & 0 & 1 & 1\\
+                                0 & 0 & 1 & 1 & 0 & 1
+                                \end{bmatrix}
+                                \).
+            
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <br-->
+                <section id="example2" style="display: none;">
+                <form action="" method="get" id="form2" onsubmit="return false">
 
+                    Enter the entries for \( P^T \).<br>
+                    <label for="m1"> </label>
+                    <input type="number" class="bit" id="m1" min="0" max="1">
+
+                    <label for="m2"> </label>
+                    <input type="number" class="bit" id="m2" min="0" max="1">
+
+                    <label for="m3"> </label>
+                    <input type="number" class="bit" id="m3" min="0" max="1"><br>
+
+                    <label for="m4"> </label>
+                    <input type="number" class="bit" id="m4" min="0" max="1">
+
+                    <label for="m5"> </label>
+                    <input type="number" class="bit" id="m5" min="0" max="1">
+
+                    <label for="m6"> </label>
+                    <input type="number" class="bit" id="m6" min="0" max="1"><br>
+
+                    <label for="m7"> </label>
+                    <input type="number" class="bit" id="m7" min="0" max="1">
+
+                    <label for="m8"> </label>
+                    <input type="number" class="bit" id="m8" min="0" max="1">
+
+                    <label for="m9"> </label>
+                    <input type="number" class="bit" id="m9" min="0" max="1"><br>
+
+                    
+                <button class="v-button" onclick="check1()" form="form2">Submit</button>
+                <button class="v-button" onclick="initial()">Reset</button>
+                <button class="v-button" role="button" onclick="part1()"> Previous </button>
+
+                </form>
             </div>
         </div>
+            <div class="column is-3-desktop is-4-tablet is-12-mobile">
+                <div class="v-datalist-container components-list">
+                    <div class="v-datalist-title">Observations</div>
+                    <div id="obs2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="column is-3-desktop is-4-tablet is-12-mobile">
+        
+
+        <!--div class="column is-3-desktop is-4-tablet is-12-mobile">
             <div class="v-datalist-container components-list">
                 <div class="v-datalist-title">Observations</div>
-                <div id="observations">
+                <div id="observations2">
+                    <span id="cEntered">
+                    </span>
+                    <br>
+                    <span id="mEntered">
+                    </span>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </section-->
+
+        <!--div class="column is-3-desktop is-4-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+                <div class="v-datalist-title">Observations</div>
+                <div id="observations2">
                     <span id="mEntered">
                     </span>
                     <br>
@@ -180,7 +267,7 @@
                     </span>
                 </div>
             </div>
-        </div>
+        </div-->
     </div>
 
 
