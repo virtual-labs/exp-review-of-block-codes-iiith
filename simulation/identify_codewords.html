@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+    <title>
+        Parity Check Matrix
+    </title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/dimension_linear_block.css">
+
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container" style="margin-top:1%;">
+
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="v-collapsible-instruction-container v-instruction-container">
+                    <div class="v-collapsible is-size-5">Instructions</div>
+                    <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+                        <ul style="list-style: disc;">
+                            <b>Quick theory overview:</b>
+                            <li>
+                                A linear code C, [n,k] have generator matrix G, parity check matrix H.
+                            </li>
+                        </ul>
+                        <br>
+                        <ul style="list-style: disc;">
+
+                            <b>Procedure:</b>
+
+                            <li>
+                                Enter a binary message by clicking the bits and click on <b>Submit</b>.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="columns is-centered">
+        <div class="column is-11-desktop is-12-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+                <p>Consider a linear block code corresponding to the parity-check
+                    matrix
+                    \(H \)=
+                    \(\begin{bmatrix}
+                    1 & 0 & 0 & 1 & 1 & 0\\
+                    0 & 1 & 0 & 0 & 1 & 1\\
+                    0 & 0 & 1 & 1 & 0 & 1
+                    \end{bmatrix}
+                    \).
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+        style="margin-top:-1.5%">
+        <div class="column is-8-desktop is-12-tablet is-12-mobile">
+            <div class="box-question">
+
+                <section id="part1">
+                    <form action="" method="get" id="form1" onsubmit="return false">
+                        Enter a <b>3-bit</b> message
+                        <button class="bit" id="msgBit1" onclick="toggleBit(1)">0</button>
+                        <button class="bit" id="msgBit2" onclick="toggleBit(2)">0</button>
+                        <button class="bit" id="msgBit3" onclick="toggleBit(3)">0</button>
+                    </form>
+                    <br>
+                    <button class="v-button" onclick="display()">Submit</button>
+                </section>
+
+                <section id="part2" style="display:none ;">
+                    <form action="" method="get" id="form2" onsubmit="return false">
+                        Enter the <b>6-bit</b> codeword corresponding to the message.
+                        <br>
+                        <br>
+
+                        <button class="bit" id="codewordBit1" onclick="toggleCodewordBit(1)">0</button>
+                        <button class="bit" id="codewordBit2" onclick="toggleCodewordBit(2)">0</button>
+                        <button class="bit" id="codewordBit3" onclick="toggleCodewordBit(3)">0</button>
+                        <button class="bit" id="codewordBit4" onclick="toggleCodewordBit(4)">0</button>
+                        <button class="bit" id="codewordBit5" onclick="toggleCodewordBit(5)">0</button>
+                        <button class="bit" id="codewordBit6" onclick="toggleCodewordBit(6)">0</button>
+
+                    </form>
+                    <br>
+                    <button class="v-button" onclick="check()" form="form2">Check</button>
+                    <button class="v-button" onclick="initial()">Reset</button>
+                </section>
+
+                <section id="part3" style="display: none;">
+                    <form action="" method="get" id="form3" onsubmit="return false">
+                        Enter number of errors
+                        <br>
+                        <br>
+                        <label for="errorsWanted"> </label>
+                        <input type="number" class="bit" id="errorsWanted" min="0" max="6">
+                    </form>
+
+                    <br>
+                    <button class="v-button" onclick="transmit()" form="form3">Transmit</button>
+                    <button class="v-button" onclick="initial()">Reset</button>
+                </section>
+
+                <section id="part4" style="display: none;">
+                    <form action="" method="get" id="form4" onsubmit="return false">
+                        Enter the result of the minimum distance decoding
+                        <br>
+                        <br>
+                        <button class="bit" id="receivedBit1" onclick="toggleReceivedBit(1)">0</button>
+                        <button class="bit" id="receivedBit2" onclick="toggleReceivedBit(2)">0</button>
+                        <button class="bit" id="receivedBit3" onclick="toggleReceivedBit(3)">0</button>
+                        <button class="bit" id="receivedBit4" onclick="toggleReceivedBit(4)">0</button>
+                        <button class="bit" id="receivedBit5" onclick="toggleReceivedBit(5)">0</button>
+                        <button class="bit" id="receivedBit6" onclick="toggleReceivedBit(6)">0</button>
+                    </form>
+                    <br>
+                    <button class="v-button" onclick="checkReceived()" form="form4">Check</button>
+                    <button class="v-button" onclick="initial()">Reset</button>
+
+            </div>
+        </div>
+
+        <div class="column is-3-desktop is-4-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+                <div class="v-datalist-title">Observations</div>
+                <div id="observations">
+                    <span id="mEntered">
+                    </span>
+                    <br>
+                    <span id="cEntered">
+                    </span>
+                    <br>
+                    <span id="cTransmitted">
+                    </span>
+                    <br>
+                    <span id="decodedEntered">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+    <script src="./js/parity_check.js"></script>
+</body>
+
+</html>
