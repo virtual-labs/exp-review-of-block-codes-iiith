@@ -60,9 +60,11 @@
                     <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
                         <ul style="list-style: disc;">
                             <b>Quick theory overview:</b>
-                            <li>The codeword \(\mathbf{y}\) corresponding to a given message \(\mathbf{m}\) and
-                                generator matrix
-                                \(\mathbf{G}\) is given by $$\mathbf{y} = \mathbf{m} \cdot \mathbf{G}$$</li>
+                            <li>
+                                The minimum distance is defined as 
+                                $$ d_{min} = \min_{i \neq j} d(c_i, c_j) $$
+                                where \(c_i\) and \(c_j\) are codewords in the code, and \(d(c_i, c_j)\) is the Hamming distance between the codewords \(c_i\) and \(c_j\).
+                            
                             </li>
                         </ul>
                         <br>
@@ -71,36 +73,17 @@
                             <b>Procedure:</b>
 
                             <li>
-                                Enter a binary message by clicking the bits and click on <b>Submit</b>.
+                                Enter all the codewords and corresponding hamming weights for the given generator matrix. The set of entered codewords will be displayed in the observations section.
                             </li>
 
                             <li>
-                                The entered message will be displayed in <b>Observations</b>.
+                                Enter the minimum distance of the code. Click on <b>Check</b> to verify the entered minimum distance. 
                             </li>
 
                             <li>
-                                Enter the encoded codeword corresponding to the message and click on <b>submit</b>.
+                                Click on <b>Reset</b> to reset the entered codewords and minimum distance.
                             </li>
 
-                            <li>
-                                The correctness of the entered codeword will be displayed in <b>Observations</b>.
-                            </li>
-
-                            <li>
-                                If the answer is correct, we will proceed to the next step. Otherwise, click on
-                                <b>Reset</b> to try these steps again with a
-                                different binary message.
-                            </li>
-                            <li>
-                                Enter the number of errors you want to introduce in the transmitted codeword and click
-                                on <b>Transmit</b>.
-                            </li>
-                            <li>
-                                The transmitted codeword will be displayed in <b>Observations</b>.
-                            </li>
-                            <li>
-                                Enter the result of the minimum distance decoding and click on <b>Check</b>.
-                            </li>
 
                         </ul>
                     </div>

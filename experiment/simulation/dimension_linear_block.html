@@ -61,9 +61,7 @@
                     <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
                         <ul style="list-style: disc;">
                             <b>Quick theory overview:</b>
-                            <li>The codeword \(\mathbf{y}\) corresponding to a given message \(\mathbf{m}\) and
-                                generator matrix
-                                \(\mathbf{G}\) is given by $$\mathbf{y} = \mathbf{m} \cdot \mathbf{G}$$</li>
+                            <li> A generator matrix is a matrix whose rows form a basis for a linear code.
                             </li>
                         </ul>
                         <br>
@@ -72,7 +70,11 @@
                             <b>Procedure:</b>
 
                             <li>
-                                Enter the dimension of the code and click on <b>Submit</b>.
+                                Enter the dimension of the matrix.
+                            </li>
+
+                            <li>
+                                Click on <b>Yes!</b> if the matrix is a valid generator matrix, else click on <b>No!</b>.
                             </li>
 
                         </ul>
@@ -101,7 +103,7 @@
                         Is the given matrix a valid generator matrix?
                         <br>
                         <div>
-                            <label for="dimensionInput">Dimension:</label>
+                            <label for="dimensionInput">Dimension of rowspace:</label>
                             <input type="number" id="dimensionInput" style="width: 2em;">
                         </div>
                     </form>
