@@ -1,43 +1,46 @@
 const generatorMatrices = [
     {
         matrix: [
-            [1, 0, 0, 1, 1, 0],
-            [0, 1, 0, 0, 1, 1],
-            [0, 0, 1, 1, 0, 1]
+            [1, 1, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 1, 1, 1, 1],
+            [0, 1, 1, 0, 1, 0, 0, 1],
+            [0, 1, 0, 1, 1, 0, 1, 0]
+        ],
+        dim: 4
+    },
+    {
+        matrix: [
+            [0, 1, 1, 1, 0, 1],
+            [1, 1, 1, 0, 1, 0],
+            [1, 1, 0, 0, 0, 1]
         ],
         dim: 3
     },
     {
         matrix: [
-            [1, 0, 0, 1, 1, 0],
-            [1, 1, 0, 0, 1, 1],
+            [1, 0, 1, 1, 0, 1],
+            [0, 1, 1, 0, 1, 0],
             [1, 0, 1, 1, 0, 1]
         ],
         dim: 2
     },
     {
         matrix: [
-            [1, 0, 0, 1, 1, 0],
-            [0, 1, 0, 0, 1, 1],
-            [1, 0, 1, 1, 0, 1]
+            [1, 1, 0, 1, 0],
+            [0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1],
+            [1, 0, 1, 0, 1]
         ],
-        dim: 4
+        dim: 3
     },
     {
         matrix: [
-            [1, 1, 1, 1, 1, 1],
-            [0, 1, 0, 0, 1, 1],
-            [1, 0, 1, 1, 0, 1]
+            [1, 1, 0],
+            [0, 0, 1],
+            [0, 1, 0],
+            [1, 0, 1]
         ],
-        dim: 5
-    },
-    {
-        matrix: [
-            [1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1]
-        ],
-        dim: 1
+        dim: 3
     }
 ];
 
@@ -65,6 +68,11 @@ function initial() {
     dim = randomGeneratorMatrix.dim;
     codelength = randomGeneratorMatrix.matrix[0].length;
 
+    const generatorMatrixElement = document.getElementById("generatorMatrix");
+    generatorMatrixElement.innerHTML = " \\(A \\)= " + formatMatrix(randomGeneratorMatrix.matrix);
+
+    // Trigger MathJax to typeset the updated content
+    MathJax.typeset([generatorMatrixElement]);
 
     const isGeneratorQuestion = document.getElementById("isGeneratorQuestion");
     const rateQuestion = document.getElementById("rateQuestion");

@@ -18,6 +18,32 @@ function toggleCodewordBit(bitIndex) {
     document.getElementById('codewordBit' + bitIndex).innerText = codewordBits[bitIndex - 1];
 }
 
+function initial() {
+    const part1 = document.getElementById("part1");
+    const part2 = document.getElementById("part2");
+    const form1 = document.getElementById("form1");
+    const form2 = document.getElementById("form2");
+
+    const helpPrompt = document.getElementById('helpPrompt');
+    const enteredCodewords = document.getElementById('enteredCodewords');
+
+    helpPrompt.innerText = '';
+    enteredCodewords.innerText = '';
+
+    part1.style.display = "block";
+    part2.style.display = "none";
+
+    bits = [0, 0, 0];
+    setOfCodewords = [];
+    codewordBits = [0, 0, 0, 0, 0, 0];
+    receivedCodewordBitsEntered = [0, 0, 0, 0, 0, 0];
+    receivedCodewordBits = [0, 0, 0, 0, 0, 0];
+
+    form1.reset();
+    form2.reset();
+
+}
+
 function submitCodeword() {
     // console.log("submitCodeword() called");
     receivedCodewordBitsEntered = codewordBits.slice(0);
